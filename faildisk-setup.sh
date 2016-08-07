@@ -1,30 +1,34 @@
 #!/bin/bash
 #FAILDISK SETUP SCRIPT
-#20160713 - Initial Release
-echo "Setting up FAILDISK"
-echo
-echo "prepare autoboot script - will run on reboot"
+#0.2	20160805	Added Product tags
+#					Added Read-Only parameter
+#					Added further help messages
+#0.1	20160713	Initial Release
+sudo clear
+echo "DIVETOOLS.IO FAILDISK SETUP"
+echo "-----------------------------------------------"
+echo "Writing autoboot script..."
 echo "#!/bin/bash" > /etc/rc.local
 echo "if [ ! -f /faildisk/faildisk_block.img ]; then" >> /etc/rc.local
-echo "	sudo parted -s /dev/mmcblk0 rm 2" >> /etc/rc.local
-echo "	sudo parted -s /dev/mmcblk0 unit B mkpart primary 70254592 3534749696" >> /etc/rc.local
-echo "	sudo resize2fs /dev/mmcblk0p2" >> /etc/rc.local
+#echo "	sudo parted -s /dev/mmcblk0 rm 2" >> /etc/rc.local
+#echo "	sudo parted -s /dev/mmcblk0 unit B mkpart primary 70254592 3534749696" >> /etc/rc.local
+#echo "	sudo resize2fs /dev/mmcblk0p2" >> /etc/rc.local
 echo "	sudo dd if=/dev/urandom of=/faildisk/faildisk_block.img bs=512 count=4194304" >> /etc/rc.local
 echo "fi" >> /etc/rc.local
 #setup block
 echo "losetup /dev/loop0 /faildisk/faildisk_block.img" >> /etc/rc.local
 echo "dmsetup create errdev0 /boot/faildisk/faildisk_table" >> /etc/rc.local
 #start modprobe
-echo "sudo modprobe g_mass_storage file=/dev/mapper/errdev0 stall=0" >> /etc/rc.local
+echo "sudo modprobe g_mass_storage file=/dev/mapper/errdev0 stall=0 ro=1 iProduct=FailDisk" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
 echo "Setting up dwc2 module"
 echo "dtoverlay=dwc2" >> /boot/config.txt
 echo "dwc2" > /etc/modules
 #These run now
-echo "Setting up faildisk directory"
+echo "Setting up FailDisk directory..."
 sudo mkdir /faildisk
 sudo mkdir /boot/faildisk
-echo "Writing faildisk parameters"
+echo "Writing FailDisk parameters..."
 echo "" > /boot/faildisk/faildisk_table
 echo '0 100000 linear /dev/loop0 0' >> /boot/faildisk/faildisk_table
 echo '100000 1 error' >> /boot/faildisk/faildisk_table
@@ -67,5 +71,11 @@ echo '4000000 2 error' >> /boot/faildisk/faildisk_table
 echo '4000002 99998 linear /dev/loop0 4000002' >> /boot/faildisk/faildisk_table
 echo '4100000 1 error' >> /boot/faildisk/faildisk_table
 echo '4100001 94303 linear /dev/loop0 4100001' >> /boot/faildisk/faildisk_table
+echo "-----------------------------------------------"
+echo "FailDisk setup is now complete. When the device is rebooted the data block"
+echo "will be generated. This should take less than 30 minutes, after which the"
+echo "device will be ready for use."
 echo
-echo "Faildisk complete"
+echo "Press any key to reboot..."
+read -n 1 -s
+sudo reboot
