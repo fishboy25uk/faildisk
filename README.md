@@ -3,11 +3,11 @@
 - [Introduction](#introduction)
 - [Methodology](#methodology)
 - [Requirements](#requirements)
-- [Setup Using Pre-Built Image](#setup-prebuilt)
-- [Setup Using Script](#setup-script)
-- [First boot](#first-boot)
-- [Troubleshooting](#troubleshooting)
-- [Disclaimer](#disclaimer)
+- [Setup Using Pre-Built Image](#setup-using-pre-built-image)
+- [Setup Using Script](#setup-using-script)
+- [First Boot](#first-boot)
+- [Issues](#issues)
+- [License](#license)
 
 ## Introduction
 
@@ -93,7 +93,7 @@ Alternatively, FailDisk can be set up by writing the Raspbian Lite image to the 
 
 NB: It is belived that, due to the USB Gadget module implementation, the smallest read chuck size the FailDisk is currently capable of is 4K (4096 bytes). Therefore the imaging solution will likely show an error size of 8 sectors (4KB) even in areas where there is only 1,2 or 4 error sectors. Hopefully this can be fixed in the future.
 
-## Reporting bugs and improving the installer
+## Issues
 Please report any issues in the issues section [here](https://github.com/divetoolsio/faildisk/issues).
 
 ### License
