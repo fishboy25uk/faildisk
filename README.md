@@ -1,15 +1,15 @@
 # FailDisk
 
-- [Intro](#intro)
+- [Introduction](#introduction)
 - [Methodology](#methodology)
 - [Requirements](#requirements)
 - [Setup Using Pre-Built Image](#setup-prebuilt)
 - [Setup Using Script](#setup-script)
 - [First boot](#first-boot)
-- [roubleshooting](#troubleshooting)
+- [Troubleshooting](#troubleshooting)
 - [Disclaimer](#disclaimer)
 
-## Intro
+## Introduction
 
 A normal requirement of digital forensics is that methods used for imaging digital storage are capable of detecting and alerting the technician to the presence of bad sectors (areas of unreadable data) on a storage medium. This presents a challenge for validation as testing of this ability requires a medium which will present errors in a consistent way. Whilst it is possible to use a hard drive which is failing, the way in which it fails cannot be relied upon to be consistent. 
 
@@ -94,8 +94,7 @@ Alternatively, FailDisk can be set up by writing the Raspbian Lite image to the 
 NB: It is belived that, due to the USB Gadget module implementation, the smallest read chuck size the FailDisk is currently capable of is 4K (4096 bytes). Therefore the imaging solution will likely show an error size of 8 sectors (4KB) even in areas where there is only 1,2 or 4 error sectors. Hopefully this can be fixed in the future.
 
 ## Reporting bugs and improving the installer
-When you encounter issues, have wishes or have code or documentation improvements, we'd like to hear from you! 
-We've actually written a document on how to best do this and you can find it [here](CONTRIBUTING.md).
+Please report any issues in the issues section [here](https://github.com/divetoolsio/faildisk/issues).
 
 ### License
 See LICENSE for license information.
