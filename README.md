@@ -53,6 +53,7 @@ Alternatively, FailDisk can be set up by writing the Raspbian Lite image to the 
  5. First, make the faildisk setup script executable, then run it:
 
   ```sudo chmod +x /boot/faildisk-setup.sh```
+  
   ```sudo ./boot/faildisk-setup.sh```
 
  6. The script will execute and then prompt when it is ready to reboot.
