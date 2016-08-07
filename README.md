@@ -40,7 +40,7 @@ This implementation is made possible by the use of the USB On The Go (OTG) port 
     ### Linux
     Use DD to write the image file to the SD card, replacing sdX with the SD card device.
 
-    dd if=faildisk-latest.img of=/dev/sdX bs=512
+ ```dd if=faildisk-latest.img of=/dev/sdX bs=512```
 
 ## Setup Using Script
 
