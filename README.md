@@ -106,10 +106,10 @@ Both the table mapping and the data block size can be customised by following th
  3.	Entries in the table should be added or modified as follows:
     
     For readable data:
-    <<<Starting Sector>>> <<<Sector Size>>> linear /dev/loop0 <<<Starting Sector>>>
+    STARTING SECTOR SECTOR SIZE linear /dev/loop0 STARTING SECTOR
 	
     For errors:
-    <<<Starting Sector>>> <<<Sector Size>>> error
+    STARTING SECTOR SECTOR SIZE error
 
     The last entry should make up the remainder of the volume.
     <<Starting Sector>> <<Total Sectors - Starting Sector>> linear /dev/loop0 <<Starting Sector>>
