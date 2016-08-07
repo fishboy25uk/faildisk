@@ -1,6 +1,7 @@
 # FailDisk
 
 - [Intro](#intro)
+- [Methodology](#methodology)
 - [Requirements](#requirements)
 - [Setup Using Pre-Built Image](#setup-prebuilt)
 - [Setup Using Script](#setup-script)
