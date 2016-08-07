@@ -32,6 +32,7 @@ This implementation is made possible by the use of the USB On The Go (OTG) port 
 ## Setup Using Pre-Built Image
 
  1. Download the [latest FailDisk image](https://s3-eu-west-1.amazonaws.com/divetoolsio/faildisk/releases/faildisk-latest.zip) and unzip the image.
+ 
  2. Write the image to the SD card:
     ### Windows
     Using a disk writer such as [Win32Imager](https://sourceforge.net/projects/win32diskimager/), write the image file to the SD card.
