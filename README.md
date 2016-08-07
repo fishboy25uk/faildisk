@@ -6,6 +6,7 @@
 - [Setup Using Pre-Built Image](#setup-using-pre-built-image)
 - [Setup Using Script](#setup-using-script)
 - [First Boot](#first-boot)
+- [Customising](#customising)
 - [Issues](#issues)
 - [License](#license)
 
@@ -93,6 +94,42 @@ Alternatively, FailDisk can be set up by writing the Raspbian Lite image to the 
     | 4100000       | 2099200000  | 1         | 512       |
 
 NB: It is belived that, due to the USB Gadget module implementation, the smallest read chuck size the FailDisk is currently capable of is 4K (4096 bytes). Therefore the imaging solution will likely show an error size of 8 sectors (4KB) even in areas where there is only 1,2 or 4 error sectors. Hopefully this can be fixed in the future.
+
+## Customising
+
+Both the table mapping and the data block size can be customised by following the steps below:
+
+### Customising Table Mapping
+
+ 1.	Remove the SD card from the FailDisk and connect to a host machine using a card reader and appropriate adaptor where necessary.
+ 2.	On the FAT32 “boot” partition , navigate to the “faildisk” directory and open the “faildisk_table” file for editing.
+ 3.	Entries in the table should be added or modified as follows:
+    
+    For readable data:
+	   <<Starting Sector>> <<Sector Size>> linear /dev/loop0 <<Starting Sector>>
+	
+    For errors:
+    <<Starting Sector>> <<Sector Size>> error
+
+    The last entry should make up the remainder of the volume.
+    <<Starting Sector>> <<Total Sectors - Starting Sector>> linear /dev/loop0 <<Starting Sector>>
+    e.g. the remainder of the total 4194304 sectors which make up the default 2GB data file.
+    4100001 94303 liner linear /dev/loop0 4100001
+
+ 4.	Save the text file then replace the SD card back in the FailDisk. Changes should take effect on rebooting.
+
+### Customising Data Block Size
+
+NB:	Ensure you have adequate storage space on the SD card for the image file required.
+
+ 1.	Follow the "Setup Using Script" guide, steps  1-3.
+ 2.	Open the downloaded script and find the line:
+
+    ```echo "	sudo dd if=/dev/urandom of=/faildisk/faildisk_block.img bs=512 count=4194304" >> /etc/rc.local```
+
+ 3. Change the the number after count to the size of the desired partiton in bytes divided by 512 to get the number of sectors.
+
+ 4. Follow the remainder of the sections in the "Setup Using Script" guide. Once complete, power down the FailDisk and edit the table map as per the "Customising Table Mapping" section, taking into account the differing data block size.
 
 ## Issues
 Please report any issues in the issues section [here](https://github.com/divetoolsio/faildisk/issues).
