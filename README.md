@@ -68,27 +68,28 @@ Alternatively, FailDisk can be set up by writing the Raspbian Lite image to the 
  1. Insert the USB cable into the "USB" port and the other end into the host. After approximately 20 seconds the FailDisk will show as a connected USB device. Depending on OS the application used it may be described as "FailDisk", "Netchip" or "Linux File-Stor Device"
  2. Image as per a physical disk using the imaging tool of your choice. By default the table mapping file is set up as below:
  
-| Sector Offset | Byte Offset | # Sectors | # Bytes |
-| 100000 | 51200000	 | 1 | 512 |
-| 200000 | 102400000 | 2 | 1024 |
-| 300000 | 153600000 | 4 | 2048 |
-| 400000 | 204800000 | 8 | 4096 |
-| 500000 | 256000000 | 16 | 8192 |
-| 600000 | 307200000 | 32 | 16384 |
-| 700000 | 358400000 | 64 | 32768 |
-| 800000 | 409600000 | 128 | 65536 |
-| 900000 | 460800000 | 256 | 131072 |
-| 1000000 | 512000000	| 1048576 | 536870912 |
-| 2100000 |	1075200000 | 1048576 | 536870912 |
-| 3300000 | 1689600000 | 256 | 131072 |
-| 3400000 |	1740800000 | 128 | 65536 |
-| 3500000 | 1792000000 | 64 | 32768 |
-| 3600000 | 1843200000 | 32 | 16384 |
-| 3700000 | 1894400000 | 16 | 8192 |
-| 3800000 | 1945600000 | 8 | 4096 |
-| 3900000 | 1996800000 | 4 | 2048 |
-| 4000000 | 2048000000 | 2 | 1024 |
-| 4100000 | 2099200000 | 1 | 512 |
+| Sector Offset | Byte Offset | # Sectors | # Bytes   |
+|---------------|-------------|-----------|-----------|
+| 100000        | 51200000  	 | 1         | 512       |
+| 200000        | 102400000   | 2         | 1024      |
+| 300000        | 153600000   | 4         | 2048      |
+| 400000        | 204800000   | 8         | 4096      |
+| 500000        | 256000000   | 16        | 8192      |
+| 600000        | 307200000   | 32        | 16384     |
+| 700000        | 358400000   | 64        | 32768     |
+| 800000        | 409600000   | 128       | 65536     |
+| 900000        | 460800000   | 256       | 131072    |
+| 1000000       | 512000000	  | 1048576   | 536870912 |
+| 2100000       |	1075200000  | 1048576   | 536870912 |
+| 3300000       | 1689600000  | 256       | 131072    |
+| 3400000       |	1740800000  | 128       | 65536     |
+| 3500000       | 1792000000  | 64        | 32768     |
+| 3600000       | 1843200000  | 32        | 16384     |
+| 3700000       | 1894400000  | 16        | 8192      |
+| 3800000       | 1945600000  | 8         | 4096      |
+| 3900000       | 1996800000  | 4         | 2048      |
+| 4000000       | 2048000000  | 2         | 1024      |
+| 4100000       | 2099200000  | 1         | 512       |
 
 NB: It is belived that, due to the USB Gadget module implementation, the smallest read chuck size the FailDisk is currently capable of is 4K (4096 bytes). Therefore the imaging solution will likely show an error size of 8 sectors (4KB) even in areas where there is only 1,2 or 4 error sectors. Hopefully this can be fixed in the future.
 
